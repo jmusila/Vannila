@@ -34,18 +34,30 @@ def get_one(id):
     for i in Questions:
         if i['id'] == id:
             return i
-            
+
 @app.route("/questions/<int:id>", methods=['GET'])
 def get_question_by_id(id):
     x = get_one(id)
     if x:
         return jsonify({"Status": "Ok", "Question": x}), 200
+    return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404 
+
+@app.route("/questions/<int:id>", methods=['PUT'])
+def edit_question(id):
+    x = get_one(id)
+    if x:
+        x.update(l)
+        return jsonify({"Message": "Question updated successfully", "Status": "ok"}), 201
     return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404
-       
 
-        
+@app.route("/questions/<int:id>", methods=['DELETE'])
+def delete_question(id):
+    x = get_one(id)
+    if x:
+        Questions.remove(x)
+        return jsonify({"Status": "Ok", "Message": "Question Deleted Successfully"}), 204
+    return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404
 
-    
 
 if __name__ == "__main__":
     app.run(debug = True)
