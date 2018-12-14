@@ -6,7 +6,7 @@ Questions = []
 
 @app.route("/")
 def welcome():
-    return "Welcome to StackOverflow-Lite!"
+    return "Welcome to StackOverflow-Lite API!"
 
 @app.route("/questions", methods=['GET'])
 def get_all_questions():
@@ -30,13 +30,21 @@ def post_question():
     return jsonify({"Status": "Ok", 'Message': "The Question was added successfully"}), 201
 
 
+def get_one(id):
+    for i in Questions:
+        if i['id'] == id:
+            return i
+            
 @app.route("/questions/<int:id>", methods=['GET'])
 def get_question_by_id(id):
-    for question in Questions:
-        if question['id'] == id:
-            return jsonify({"Status": "Ok", "Question": question}), 200
-        else:
-            return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404
+    x = get_one(id)
+    if x:
+        return jsonify({"Status": "Ok", "Question": x}), 200
+    return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404
+       
+
+        
+
     
 
 if __name__ == "__main__":
