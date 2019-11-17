@@ -3,7 +3,7 @@ import unittest
 import json
 
 
-from app import create_app
+from app.app import create_app
 
 class TestQuestions(unittest.TestCase):
     def Setup(self):
@@ -18,5 +18,3 @@ class TestQuestions(unittest.TestCase):
         res = self.client.get("/")
         self.assertEqual(res.status_code, 200)
 
-if __name__ == "__main__":
-    unittest.main()
