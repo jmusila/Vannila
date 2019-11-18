@@ -24,5 +24,8 @@ class TestQuestions(unittest.TestCase):
     def test_post_question(self):
         pass
 
+    def test_get_single_question(self):
+        pass
+
     def tearDown(self):
         return super().tearDown()
