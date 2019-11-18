@@ -1,9 +1,9 @@
 import os
 import unittest
-import json
 
 
 from app.app import create_app
+
 
 class TestQuestions(unittest.TestCase):
     def Setup(self):
@@ -18,3 +18,11 @@ class TestQuestions(unittest.TestCase):
         res = self.client.get("/")
         self.assertEqual(res.status_code, 200)
 
+    def test_get_all_question(self):
+        pass
+
+    def test_post_question(self):
+        pass
+
+    def tearDown(self):
+        return super().tearDown()
