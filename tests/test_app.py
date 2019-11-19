@@ -6,7 +6,7 @@ from app.app import create_app
 
 
 class TestQuestions(unittest.TestCase):
-    def Setup(self):
+    def setUp(self):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client()
 
