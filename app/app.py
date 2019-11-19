@@ -51,7 +51,7 @@ def create_app(config_name):
     def edit_question(id):
         x = get_one(id)
         if x:
-            x.update(l)
+            x.update(x)
             return jsonify({"Message": "Question updated successfully", "Status": "ok"}), 201
         return jsonify({"Message" : "Question with that id not found", "Status" : "Error"}), 404
 
